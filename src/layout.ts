@@ -51,6 +51,7 @@ import {
   type WordBreakMode as AnalysisWordBreakMode,
 } from './analysis.js'
 import {
+  setMeasureContext as _setMeasureContext,
   clearMeasurementCaches,
   getCorrectedSegmentWidth,
   getEngineProfile,
@@ -776,3 +777,6 @@ export function setLocale(locale?: string): void {
   setAnalysisLocale(locale)
   clearCache()
 }
+
+/** Inject a custom canvas 2D context for server-side use (e.g. node-canvas). */
+export const setMeasureContext = _setMeasureContext

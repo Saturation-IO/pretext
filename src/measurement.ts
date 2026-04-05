@@ -24,6 +24,11 @@ const maybeEmojiRe = /[\p{Emoji_Presentation}\p{Extended_Pictographic}\p{Regiona
 let sharedGraphemeSegmenter: Intl.Segmenter | null = null
 const emojiCorrectionCache = new Map<string, number>()
 
+/** Inject a custom canvas 2D context (e.g. node-canvas for server-side use). */
+export function setMeasureContext(ctx: CanvasRenderingContext2D | OffscreenCanvasRenderingContext2D): void {
+  measureContext = ctx
+}
+
 export function getMeasureContext(): CanvasRenderingContext2D | OffscreenCanvasRenderingContext2D {
   if (measureContext !== null) return measureContext
 
